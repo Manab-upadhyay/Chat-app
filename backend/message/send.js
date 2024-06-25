@@ -19,7 +19,7 @@ const sendmessage = async(req,res)=>{
         let conversations= await conversation.findOne({participants:{$all:[senderid, receverid]}})
         if(!conversations){
             console.log("inside conversation")
-        let    conversations =  await conversation.create({
+         conversations =  await conversation.create({
             participants:  [senderid, receverid] 
             })
             console.log("saved")
@@ -27,10 +27,12 @@ const sendmessage = async(req,res)=>{
         }
      console.log(Messages)
         const newmsg=  new message({
+
     senderid,
     receverid,
     message: Messages
         })
+        console.log("news msg",newmsg)
         await newmsg.save()
         if(newmsg){
             conversations?.messages.push(newmsg._id)
