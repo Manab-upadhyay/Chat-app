@@ -37,6 +37,7 @@ server.listen(port, (err) => {
   if (err) {
     console.error('Server start error:', err);
   } else {
+    connectDB()
     console.log('Server started on port', port);
   }
 });
